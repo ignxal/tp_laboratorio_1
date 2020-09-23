@@ -13,6 +13,33 @@ int initEmployees(sEmployee list[], int len)
     return 0;
 }
 
+void showEmployee(sEmployee list)
+{
+    printf ("%5d\t %7s\t %7s\t %7.2f\t %3d\n",      list.id,
+                                                    list.name,
+                                                    list.lastName,
+                                                    list.salary,
+                                                    list.sector);
+    printf("--------------------------------------------------------------------------------------\n");
+}
+
+void showAllEmployees(sEmployee list[],int len)
+{
+    int i;
+    
+    printf("--------------------------------------------------------------------------------------\n");
+    printf("   Id \t  Nombre \tApellido \t Salario \t Sector\n");
+    printf("--------------------------------------------------------------------------------------\n");
+    
+    for(i=0;i<len;i++)
+    {
+        if(list[i].isEmpty==FULL)
+        {
+            showEmployee(list[i]);
+        }
+    }
+}
+
 int generateId(sEmployee list[], int len)
 {
     int i;
@@ -69,6 +96,42 @@ void addEmployeeFunction(sEmployee list[])
     index = lookForSpace(list, E);
     // Cargo datos
     index = addEmployee(list, E, index);
-    // Comunico usuario carga o error
+    // Comunico usuario confirmacion o error
+    operationConfirmation(index);
+}
+
+int removeEmployee(sEmployee list[], int len)
+{
+    int i;
+    int auxID;
+    int index=-1;
+    
+    //pedir ingreso de id
+    printf("Ingrese ID de empleado: ");
+    scanf("%d", &auxID);
+    
+    //busco id en array
+    for(i=0; i<len; i++)
+    {
+        if (list[i].isEmpty==FULL && auxID==list[i].id) // si encontro ID
+        {
+            list[i].isEmpty=EMPTY;
+            index = 0;
+            break;
+        }
+    }
+    
+    return index;
+}
+
+void removeEmployeeFunction(sEmployee list[])
+{
+    int index;
+    
+    // Muestro Empleados
+    showAllEmployees(list, E);
+    // Remuevo empleados
+    index = removeEmployee(list, E);
+    // Comunico usuario confirmacion o error
     operationConfirmation(index);
 }

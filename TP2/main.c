@@ -23,7 +23,10 @@ int main()
     
     do 
     { // menu e ingreso de opcion de usuario
-        printf("--- Seleccione una opción ---\n1. Ingresar Empleado\n2. Modificar Empleado\n3. Eliminar empleado\n4. Mostrar Empleados\n");
+        printf("####################################################################################################################################\n");
+        printf("---------------------------------------------------  Bienvenido al menu  -----------------------------------------------------------\n");
+        printf("####################################################################################################################################\n");
+        printf("1. Ingresar Empleado\n2. Modificar Empleado\n3. Eliminar empleado\n4. Mostrar Empleados\n");
         option = menu("Ingrese una opcion: ");
         switch (option)
         {
@@ -34,7 +37,7 @@ int main()
 
             break;
             case 3:
-
+            removeEmployeeFunction(list);
             case 4:
             
             break;

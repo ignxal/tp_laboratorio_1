@@ -32,6 +32,18 @@ int initEmployees(sEmployee list[], int len);
 * 
 * \return int the ID generated
 */
+
+void showAllEmployees (sEmployee list[], int len);
+/** \brief Shows all employees loaded in the system
+* 
+* \param sEmployee list[]
+* \param len int Array length
+*/ 
+void showEmployee (sEmployee list);
+/** \brief Shows info from an employee
+* 
+* \param sEmployee list
+*/ 
 int generateId(sEmployee list[], int len);
 
 /** \brief Search for space in the array
@@ -54,3 +66,15 @@ free space] - (0) if Ok
 int addEmployee(sEmployee list[], int len, int index);
 
 void addEmployeeFunction(sEmployee list[]);
+
+
+/** \brief Remove an Employee by Id (put isEmpty Flag in 1)
+ *
+ * \param sEmployee list[]
+ * \param len int Array length
+ * 
+ * \return int Return (-1) if Error [Invalid length or if can't find a pet] - (1) if Ok
+ */
+int removeEmployee (sEmployee list[], int len);
+
+void removeEmployeeFunction(sEmployee list[]);
