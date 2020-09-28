@@ -15,11 +15,14 @@ o Salario o Sector
 
 int main()
 {
+    //estructura
     sEmployee list[E];
     
-    int option;
-    
+    //funcion
     initEmployees(list, E);
+    
+    //variable
+    int option;
     
     do 
     { // menu e ingreso de opcion de usuario
@@ -31,15 +34,16 @@ int main()
         switch (option)
         {
             case 1:
-            addEmployeeFunction(list);
+            addEmployeeMain(list);
             break;
             case 2:
 
             break;
             case 3:
-            removeEmployeeFunction(list);
+            removeEmployeeMain(list);
             case 4:
-            
+            sortEmployeesMain(list); // A
+            // B
             break;
             case 5:
             printf("Ejecución finalizada. Hasta la próxima!\n");

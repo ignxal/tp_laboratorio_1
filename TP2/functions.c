@@ -49,3 +49,18 @@ void operationConfirmation(int index)
         break;
     }
 }
+
+int getIntVal(char message[], char messageError[], int min, int max)
+{
+    int value;
+    
+    printf("%s", message);
+    scanf("%d", &value);
+    while (value < min || value > max)
+    {
+        printf("%s", messageError);
+        scanf("%d", &value);
+    }
+    
+    return value;
+}

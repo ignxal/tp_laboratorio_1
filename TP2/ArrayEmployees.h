@@ -32,19 +32,23 @@ int initEmployees(sEmployee list[], int len);
 * 
 * \return int the ID generated
 */
+int generateId(sEmployee list[], int len);
 
-void showAllEmployees (sEmployee list[], int len);
-/** \brief Shows all employees loaded in the system
-* 
-* \param sEmployee list[]
-* \param len int Array length
-*/ 
-void showEmployee (sEmployee list);
 /** \brief Shows info from an employee
 * 
-* \param sEmployee list
+* \param sEmployee list[]
 */ 
-int generateId(sEmployee list[], int len);
+void printAnEmployee (sEmployee list);
+
+ 
+/** \brief print the content of employees array
+ *
+ * \param sEmployee list[]
+ * \param len int
+ * \return int
+ *
+ */
+int printEmployees (sEmployee list[], int len);
 
 /** \brief Search for space in the array
 * 
@@ -65,8 +69,17 @@ free space] - (0) if Ok
  */
 int addEmployee(sEmployee list[], int len, int index);
 
-void addEmployeeFunction(sEmployee list[]);
+/** \brief add in a existing list of employees the values received as parameters
+ * in the first empty position - This functions calls the ones involved
+ * \param sEmployee list
+ */
+void addEmployeeMain(sEmployee list[]);
 
+/** \brief Remove an Employee by Id (put isEmpty Flag in 1) - This functions calls the ones involved
+ *
+ * \param sEmployee list[]
+ */
+void removeEmployeeMain(sEmployee list[]);
 
 /** \brief Remove an Employee by Id (put isEmpty Flag in 1)
  *
@@ -77,4 +90,18 @@ void addEmployeeFunction(sEmployee list[]);
  */
 int removeEmployee (sEmployee list[], int len);
 
-void removeEmployeeFunction(sEmployee list[]);
+/** \brief Sort the elements in the array of employees - This functions calls the ones involved
+ *
+ * 
+ */
+void sortEmployeesMain(sEmployee list[]);
+
+/** \brief Sort the elements in the array of employees
+ *
+ * \param sEmployee list[]
+ * \param len int
+ * \param order int [1] indicate UP - [0] indicate DOWN
+ * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
+ *
+ */
+int sortEmployees(sEmployee list[], int len, int order);
