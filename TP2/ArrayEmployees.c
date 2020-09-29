@@ -224,3 +224,92 @@ int sortEmployees(sEmployee list[], int len, int order)
     
     return validation;
 }
+
+int averageSalary(sEmployee list[])
+{
+    int i;
+    float totalSalary;
+    float aveSalary;
+    int aboveAverageSalary;
+
+    // Saco salario total
+    totalSalary= doSum(list, E);
+    printf("El total de salarios es: %.2f\n", totalSalary);
+    // Saco salario promedio
+    aveSalary= doAverage(list);
+    printf("El salario promedio es: %.2f\n", aveSalary);
+    // Saco cantidad por encima del promedio
+    aboveAverageSalary= aboveAverage(list, E, aveSalary);
+    printf("Hay %d que superan el salario promedio\n", aboveAverageSalary);
+
+}
+
+float doSum(sEmployee list[], int len)
+{
+    int i;
+    float sumReturn=0;
+     
+    for(i=0;i<len;i++)
+    {
+        if (list[i].isEmpty!= FULL)
+        {
+            continue;
+        }
+        
+        sumReturn=sumReturn+list[i].salary;
+    }
+    
+    return sumReturn;
+}   
+
+int sumFullSpaces(sEmployee list[], int len)
+{
+    int i;
+    int counter=0;
+     
+    for (i=0; i<len; i++)
+    {
+        if(list[i].isEmpty!=FULL)
+        {
+            continue;
+        }
+        
+        counter++;
+    }
+
+    return counter;
+}
+
+float doAverage (sEmployee list[])
+{
+    float average;
+    float acc;
+    int counter;
+    
+    acc = doSum(list, E);
+    counter = sumFullSpaces(list, E);
+    average = acc / counter;
+    
+    return average;
+}
+
+int aboveAverage (sEmployee list[], int len, float average)
+{
+    int i;
+    int above=0;
+     
+    for (i=0; i<len; i++)
+    {
+        if(list[i].isEmpty!=FULL)
+        {
+            continue;
+        }
+        
+        if (list[i].salary > average)
+        {
+            above++;
+        }
+    }
+    
+    return above;
+}

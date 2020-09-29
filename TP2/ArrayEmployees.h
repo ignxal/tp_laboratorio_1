@@ -105,3 +105,28 @@ void sortEmployeesMain(sEmployee list[]);
  *
  */
 int sortEmployees(sEmployee list[], int len, int order);
+
+
+int averageSalary(sEmployee list[]);
+
+/** \brief Does sum operation
+* 
+* \param sEmployee array[]
+* \param int len array length
+* 
+* \return float result
+*/
+float doSum(sEmployee list[],int len);
+
+int sumFullSpaces(sEmployee list[], int len);
+
+
+/** \brief Does average operation
+* 
+* \param sEmployee array[]
+* 
+* \return float average
+*/
+float doAverage (sEmployee list[]);
+
+int aboveAverage (sEmployee list[], int len, float average);

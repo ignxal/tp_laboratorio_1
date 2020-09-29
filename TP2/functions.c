@@ -64,3 +64,4 @@ int getIntVal(char message[], char messageError[], int min, int max)
     
     return value;
 }
+

@@ -43,7 +43,7 @@ int main()
             removeEmployeeMain(list);
             case 4:
             sortEmployeesMain(list); // A
-            // B
+            averageSalary(list);// B
             break;
             case 5:
             printf("Ejecución finalizada. Hasta la próxima!\n");
