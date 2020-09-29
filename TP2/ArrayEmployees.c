@@ -138,6 +138,23 @@ int removeEmployee(sEmployee list[], int len)
     return index;
 }
 
+void aboutEmployees(sEmployee list[])
+{
+    int option;
+    
+    option = getIntVal("\n1) Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n2)Total y promedio de los salarios, y cuántos empleados superan el salario promedio.\nIndique opcion deseada:  ", "Error. Ingrese opcion (1-2): ", 1, 2);
+    
+    switch (option)
+    {
+        case 1:
+        sortEmployeesMain(list);
+        break;
+        case 2:
+        averageSalary(list);
+        break;
+    }
+}
+
 void sortEmployeesMain(sEmployee list[])
 {
     int validation=-1;
@@ -189,7 +206,7 @@ int sortEmployees(sEmployee list[], int len, int order)
                 }
                 else
                 {
-                    if(strcmp(list[i].lastName,list[j].lastName)==0 && list[i].sector < list[j].sector) // Ordeno por sector
+                    if(strcmp(list[i].lastName,list[j].lastName)==0 && list[i].sector < list[j].sector) // Ordeno por sector ante igualdad
                     {
                         aux = list[i];
                         list[i] = list[j];
@@ -208,7 +225,7 @@ int sortEmployees(sEmployee list[], int len, int order)
                 }
                 else
                 {
-                    if(strcmp(list[i].lastName,list[j].lastName)==0 && list[i].sector > list[j].sector) // Ordeno por sector
+                    if(strcmp(list[i].lastName,list[j].lastName)==0 && list[i].sector > list[j].sector) // Ordeno por sector ante igualdad
                     {
                         aux = list[i];
                         list[i] = list[j];
@@ -225,7 +242,7 @@ int sortEmployees(sEmployee list[], int len, int order)
     return validation;
 }
 
-int averageSalary(sEmployee list[])
+void averageSalary(sEmployee list[])
 {
     int i;
     float totalSalary;
@@ -234,14 +251,23 @@ int averageSalary(sEmployee list[])
 
     // Saco salario total
     totalSalary= doSum(list, E);
-    printf("El total de salarios es: %.2f\n", totalSalary);
+    
+    if (totalSalary != 0)
+    {
+        printf("\nEl total de salarios es: %.2f", totalSalary);
     // Saco salario promedio
-    aveSalary= doAverage(list);
-    printf("El salario promedio es: %.2f\n", aveSalary);
+        aveSalary= doAverage(list);
+        printf("\nEl salario promedio es: %.2f", aveSalary);
     // Saco cantidad por encima del promedio
-    aboveAverageSalary= aboveAverage(list, E, aveSalary);
-    printf("Hay %d que superan el salario promedio\n", aboveAverageSalary);
-
+        aboveAverageSalary= aboveAverage(list, E, aveSalary);
+        printf("\nHay %d empleado/s que superan el salario promedio\n", aboveAverageSalary);
+    }
+    
+    else 
+    {
+        totalSalary=-1;
+        operationConfirmation(totalSalary);
+    }
 }
 
 float doSum(sEmployee list[], int len)

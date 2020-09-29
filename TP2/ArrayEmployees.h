@@ -90,9 +90,15 @@ void removeEmployeeMain(sEmployee list[]);
  */
 int removeEmployee (sEmployee list[], int len);
 
+/** \brief Print available info - This functions gives the option to choose between both options
+ *
+ * param sEmployee list[]
+ */
+void aboutEmployees(sEmployee list[]);
+
 /** \brief Sort the elements in the array of employees - This functions calls the ones involved
  *
- * 
+ * param sEmployee list[]
  */
 void sortEmployeesMain(sEmployee list[]);
 
@@ -106,8 +112,11 @@ void sortEmployeesMain(sEmployee list[]);
  */
 int sortEmployees(sEmployee list[], int len, int order);
 
-
-int averageSalary(sEmployee list[]);
+/** \brief Calculates average salary between employees - This functions calls the ones involved
+ *
+ * param sEmployee list[]
+ */
+void averageSalary(sEmployee list[]);
 
 /** \brief Does sum operation
 * 
@@ -118,8 +127,14 @@ int averageSalary(sEmployee list[]);
 */
 float doSum(sEmployee list[],int len);
 
+/** \brief Search for not empty space in the array and sum them
+* 
+* \param sEmployee list[]
+* \param len int Array length
+* 
+* \return int Return result
+*/
 int sumFullSpaces(sEmployee list[], int len);
-
 
 /** \brief Does average operation
 * 
@@ -129,4 +144,12 @@ int sumFullSpaces(sEmployee list[], int len);
 */
 float doAverage (sEmployee list[]);
 
+/** \brief Calculates how many employees are above the average salary 
+* 
+* \param sEmployee list[]
+* \param len int Array length
+* \param average float
+* 
+* \return int Return amount of employees above average
+*/
 int aboveAverage (sEmployee list[], int len, float average);

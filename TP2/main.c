@@ -29,7 +29,7 @@ int main()
         printf("####################################################################################################################################\n");
         printf("---------------------------------------------------  Bienvenido al menu  -----------------------------------------------------------\n");
         printf("####################################################################################################################################\n");
-        printf("1. Ingresar Empleado\n2. Modificar Empleado\n3. Eliminar empleado\n4. Mostrar Empleados\n");
+        printf("1. Ingresar Empleado\n2. Modificar Empleado\n3. Eliminar empleado\n4. Informar sobre Empleados\n");
         option = menu("Ingrese una opcion: ");
         switch (option)
         {
@@ -42,8 +42,7 @@ int main()
             case 3:
             removeEmployeeMain(list);
             case 4:
-            sortEmployeesMain(list); // A
-            averageSalary(list);// B
+            aboutEmployees(list);
             break;
             case 5:
             printf("Ejecución finalizada. Hasta la próxima!\n");
