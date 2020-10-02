@@ -42,6 +42,21 @@ int printEmployees(sEmployee list[],int len)
     return 0;
 }
 
+void addEmployeeMain(sEmployee list[])
+{
+    int index;
+    // Busco espacio en array   
+    index = lookForSpace(list, E);
+    // Cargo datos
+    if(index!=-1)//si encontro lugar
+    {
+        addEmployee(list, E, index);
+        index= 0;
+    }
+    // Comunico usuario confirmacion o error
+    operationConfirmation(index);
+}
+
 int generateId(sEmployee list[], int len)
 {
     int i;
@@ -87,19 +102,87 @@ int addEmployee(sEmployee list[], int len, int index)
     return index;
 }
 
-void addEmployeeMain(sEmployee list[])
+void modifyEmployeeMain(sEmployee list[])
 {
-    int index;
-    // Busco espacio en array   
-    index = lookForSpace(list, E);
-    // Cargo datos
-    if(index!=-1)//si encontro lugar
+    int validation=-1;
+    int auxID;
+    int option;
+    int i;
+    
+    // Muestro empleados al usuario
+    printEmployees(list, E);
+    
+    // Pido ingreso de ID del empleado
+    auxID= getInt("Ingrese ID empleado: ");
+    
+    // Valido ID existente
+    validation=validateID(list,E,auxID);
+    
+    if (validation==0)
     {
-        addEmployee(list, E, index);
-        index= 0;
+        // Pregunto que quiere modificar
+        option = getIntVal("\n0) Nombre\n1) Apellido\n2) Salario\n3) Sector\nIndique que desea modificar: ", "Error. Ingrese opcion (0-3): ", 0, 3);
+    
+        // Ingreso de Modificacion
+        validation = modifyEmployee(list, E, option, auxID);
+
+        // Confirmo al usuario modificacion exitosa o no
+        operationConfirmation(validation);
     }
-    // Comunico usuario confirmacion o error
-    operationConfirmation(index);
+    
+    else
+    {
+        // Mal ingreso de ID
+        operationConfirmation(validation); 
+    }
+}
+
+int validateID(sEmployee list[], int len, int auxID)
+{
+    int i;
+    int confirmacion=-1;
+    
+    for(i=0; i<len;i++)
+    {
+        if(list[i].isEmpty==FULL && auxID == list[i].id)
+        {
+            confirmacion=0;
+            break;
+        }
+    }
+    
+    return confirmacion;
+}
+
+int modifyEmployee(sEmployee list[], int len, int option, int auxID)
+{
+    int i;
+    int confirmacion=-1;
+        
+        for(i=0; i<len;i++)
+        {
+            if(list[i].isEmpty==FULL && auxID == list[i].id)
+            {
+                switch (option)
+                {
+                case 0:
+                getString("Reingrese nombre de empleado: ", list[i].name);
+                break;
+                case 1:
+                getString("Reingrese apellido de empleado: ", list[i].lastName);
+                break;
+                case 2:
+                list[i].salary=getFloat("Reingrese salario de empleado: ");
+                break;
+                case 3:
+                list[i].sector=getInt("Reingrese sector de empleado: ");
+                break;
+                }
+                confirmacion=0;
+            }
+        }
+    
+    return confirmacion;
 }
 
 void removeEmployeeMain(sEmployee list[])
@@ -197,7 +280,6 @@ int sortEmployees(sEmployee list[], int len, int order)
             switch (order)
             {
                 case 0: // De Z-A
-
                 if(strcmp(list[i].lastName,list[j].lastName)<0) // Ordeno por apellido
                 {
                     aux = list[i];

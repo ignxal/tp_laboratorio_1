@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define E 100
+#define E 1000
 #define FULL 1
 #define EMPTY 0
 #define DELETED -1
 
 typedef struct
 {
- int id;
- char name[51];
- char lastName[51];
- float salary;
- int sector;
- int isEmpty;
+    int id;
+    char name[51];
+    char lastName[51];
+    float salary;
+    int sector;
+    int isEmpty;
 }sEmployee;
 
 /** \brief To indicate that all position in the array are empty,
@@ -24,15 +24,6 @@ typedef struct
  *
  */
 int initEmployees(sEmployee list[], int len);
-
-/** \brief Generates an automatic ID for Employees
-* 
-* \param sEmployee list[]
-* \param len int Array length
-* 
-* \return int the ID generated
-*/
-int generateId(sEmployee list[], int len);
 
 /** \brief Shows info from an employee
 * 
@@ -49,6 +40,21 @@ void printAnEmployee (sEmployee list);
  *
  */
 int printEmployees (sEmployee list[], int len);
+
+/** \brief add in a existing list of employees the values received as parameters
+ * in the first empty position - This functions calls the ones involved
+ * \param sEmployee list
+ */
+void addEmployeeMain(sEmployee list[]);
+
+/** \brief Generates an automatic ID for Employees
+* 
+* \param sEmployee list[]
+* \param len int Array length
+* 
+* \return int the ID generated
+*/
+int generateId(sEmployee list[], int len);
 
 /** \brief Search for space in the array
 * 
@@ -69,16 +75,38 @@ free space] - (0) if Ok
  */
 int addEmployee(sEmployee list[], int len, int index);
 
-/** \brief add in a existing list of employees the values received as parameters
- * in the first empty position - This functions calls the ones involved
- * \param sEmployee list
- */
-void addEmployeeMain(sEmployee list[]);
+
+/** \brief Modify an Employee by Id - This functions calls the ones involved
+ *
+ * \param sEmployee list[]
+ */ 
+void modifyEmployeeMain(sEmployee list[]);
+
+/** \brief Modify an Employee by Id - This functions calls the ones involved
+ *
+ * \param sEmployee list[]
+ * \param len int
+ * \param auxID int
+ * 
+ * \return int confirmacion (-1) If error - (0) If Ok
+ */ 
+int validateID(sEmployee list[], int len, int auxID);
+
+/** \brief Modify an Employee by Id - This functions calls the ones involved
+ *
+ * \param sEmployee list[]
+ * \param len int
+ * \param option int
+ * \param auxID int
+ * 
+ * \return int confirmacion (-1) If error - (0) If Ok
+ */ 
+int modifyEmployee(sEmployee list[], int len, int option, int auxID);
 
 /** \brief Remove an Employee by Id (put isEmpty Flag in 1) - This functions calls the ones involved
  *
  * \param sEmployee list[]
- */
+ */ 
 void removeEmployeeMain(sEmployee list[]);
 
 /** \brief Remove an Employee by Id (put isEmpty Flag in 1)

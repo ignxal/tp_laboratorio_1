@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdio_ext.h>
 #include <string.h>
 
 int menu(char mensaje[]) 
@@ -64,4 +65,3 @@ int getIntVal(char message[], char messageError[], int min, int max)
     
     return value;
 }
-

@@ -37,10 +37,11 @@ int main()
             addEmployeeMain(list);
             break;
             case 2:
-
+            modifyEmployeeMain(list);
             break;
             case 3:
             removeEmployeeMain(list);
+            break;
             case 4:
             aboutEmployees(list);
             break;
