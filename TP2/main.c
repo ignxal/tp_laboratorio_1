@@ -17,7 +17,7 @@ int main()
         printf("####################################################################################################################################\n");
         printf("---------------------------------------------------  Bienvenido al menu  -----------------------------------------------------------\n");
         printf("####################################################################################################################################\n");
-        printf("1. Ingresar Empleado\n2. Modificar Empleado\n3. Eliminar empleado\n4. Informar sobre Empleados\n");
+        printf("1. Ingresar Empleado\n2. Modificar Empleado\n3. Eliminar empleado\n4. Informar sobre Empleados\n5. Salir\n");
         option = menu("Ingrese una opcion: ");
         switch (option)
         {
