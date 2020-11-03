@@ -79,18 +79,54 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     return 1;
 }
 
+int controller_ListEmployee(LinkedList* pArrayListEmployee)
+{
+    Employee* aux;
+    int i;
+    int len;
+    int returnValue=-1;
+
+    if(pArrayListEmployee != NULL)
+    {
+        len = ll_len(pArrayListEmployee);
+        if(len!=0)
+        {
+            printf("__________________________________________________________\n"
+                   "|    ID    |       NOMBRE       |HORAS TRABAJO|  SALARIO |\n"
+                   "|__________|____________________|_____________|__________|\n");
+            for(i=0; i<len; i++)
+            {
+                aux =(Employee*)ll_get(pArrayListEmployee, i);
+                employee_print(aux);
+            }
+                printf("|__________|____________________|_____________|__________|\n");
+            returnValue=0;
+        }
+    }
+    return returnValue;
+}
 
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+
+    int index;
+    int id;
+    int returnValue=-1;
+
+
+
+    if(pArrayListEmployee != NULL && controller_ListEmployee(pArrayListEmployee)!=-1 )
+    {
+        id= getIntVal("Ingrese ID a buscar(0-2500): ", "ERROR! Ingrese ID a buscar(0-2500): ", 0, 2500);
+        index= employee_lookForId(pArrayListEmployee, id);
+        if(index!=-1)
+        {
+            returnValue=employee_delete(pArrayListEmployee, index);
+        }
+    }
+
+    return returnValue;
 }
-
-
-int controller_ListEmployee(LinkedList* pArrayListEmployee)
-{
-    return 1;
-}
-
 
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
@@ -100,13 +136,38 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
+    FILE* pFile;
+    int returnValue=0;
 
-    return 1;
+    if(pArrayListEmployee != NULL && path != NULL && ll_isEmpty(pArrayListEmployee)==0)
+    {
+        pFile=fopen(path, "w");
+        if(pFile!= NULL)
+        {
+            returnValue=parser_EmployeeToText(pFile, pArrayListEmployee);
+        }
+        fclose(pFile);
+    }
+
+    return returnValue;
 }
 
 
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* pFile;
+    int returnValue=0;
+
+    if(path!=NULL && pArrayListEmployee!= NULL && ll_isEmpty(pArrayListEmployee)==0)
+    {
+        pFile=fopen(path, "wb");
+        if(pFile!=NULL)
+        {
+            returnValue=parser_EmployeeToBinary(pFile, pArrayListEmployee);
+        }
+        fclose(pFile);
+    }
+
+    return returnValue;
 }
 

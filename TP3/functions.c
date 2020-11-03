@@ -80,3 +80,21 @@ int getIntVal(char message[], char messageError[], int min, int max)
     return value;
 }
 
+char getChar(char message[], char errorMessage[], char a, char b)
+{
+    char character;
+
+        printf("%s", message);
+        fflush(stdin);
+        scanf("%c", &character);
+
+        while (character!= a && character!= b)
+        {
+            printf("%s", errorMessage);
+            fflush(stdin);
+            scanf("%c", &character);
+        }
+
+    return character;
+}
+

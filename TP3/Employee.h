@@ -12,10 +12,11 @@ typedef struct
 
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
-void employee_delete();
 
-int mostrarEmpleado(Employee* unEmpleado);
-int employee_nextId(LinkedList* pArrayListEmployee);
+int employee_delete(LinkedList* this, int index);
+void employee_print(Employee* anEmployee);
+int employee_nextId(LinkedList* this);
+int employee_lookForId(LinkedList* pArrayListEmployee, int id);
 
 int employee_setId(Employee* this,int id);
 int employee_getId(Employee* this,int* id);

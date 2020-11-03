@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Employee.h"
+#include "functions.h"
 #include <string.h>
 
 Employee* employee_new()
@@ -58,7 +59,30 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     return puntero;
 }
 
-int mostrarEmpleado(Employee* unEmpleado)
+int employee_delete(LinkedList* pArrayListEmployee, int index)
+{
+    Employee* pEmployee;
+    char confirmation;
+    int returnValue=-1;
+
+
+    if(pArrayListEmployee != NULL)
+    {
+        confirmation=getChar("Confirma baja de empleado? (s/n): ","Error. Confirma baja de empleado? (s/n): ", 's', 'n');
+
+        if (confirmation=='s')
+        {
+            pEmployee=ll_pop(pArrayListEmployee, index);
+            printf("Se elimino: \n");
+            employee_print(pEmployee);
+            returnValue=0;
+        }
+    }
+
+    return returnValue;
+}
+
+void employee_print(Employee* anEmployee)
 {
     int id;
     char nombre[50];
@@ -68,21 +92,18 @@ int mostrarEmpleado(Employee* unEmpleado)
     int nombreFlag;
     int horasTrabajadasFlag;
     int sueldoFlag;
-    int retorno=0;
 
-    idFlag=employee_getId(unEmpleado, &id);
-    nombreFlag=employee_getNombre(unEmpleado, &nombre);
-    horasTrabajadasFlag=employee_getHorasTrabajadas(unEmpleado, &horasTrabajadas);
-    sueldoFlag=employee_getSueldo(unEmpleado, &sueldo);
+    idFlag=employee_getId(anEmployee, &id);
+    nombreFlag=employee_getNombre(anEmployee, nombre);
+    horasTrabajadasFlag=employee_getHorasTrabajadas(anEmployee, &horasTrabajadas);
+    sueldoFlag=employee_getSueldo(anEmployee, &sueldo);
 
 
     if ((idFlag==1)&& (nombreFlag==1) && (horasTrabajadasFlag==1) && (sueldoFlag==1))
     {
-        printf("%d --- %s --- %d --- %d\n", id, nombre, horasTrabajadas, sueldo);
-        retorno=1;
+        printf("|%10d|%20s|%13d|%10d|\n", id, nombre, horasTrabajadas, sueldo);
     }
 
-    return retorno;
 }
 
 int employee_nextId(LinkedList* pArrayListEmployee)
@@ -105,6 +126,33 @@ int employee_nextId(LinkedList* pArrayListEmployee)
 		}
 	}
 	return lastId+1;
+}
+
+int employee_lookForId(LinkedList* pArrayListEmployee, int id)
+{
+    Employee* pEmployee;
+    int i;
+    int aux;
+    int len;
+    int index=-1;
+
+    if(pArrayListEmployee != NULL)
+    {
+        len=ll_len(pArrayListEmployee);
+
+        for(i=0; i<len; i++)
+        {
+            pEmployee=(Employee*)ll_get(pArrayListEmployee, i);
+            employee_getId(pEmployee, &aux);
+
+            if(id == aux)
+            {
+                index=i;
+                break;
+            }
+        }
+    }
+    return index;
 }
 
 int employee_setId(Employee* this,int id)

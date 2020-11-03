@@ -48,3 +48,6 @@ void operationConfirmation(int index);
 * \return int el dato ingresado
 */
 int getIntVal(char message[], char messageError[], int min, int max);
+
+
+char getChar(char mensaje[], char errorMessage[], char a, char b);

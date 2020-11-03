@@ -5,21 +5,6 @@
 #include "Employee.h"
 #include "functions.h"
 
-/****************************************************
-    Menu:
-     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
-     3. Alta de empleado
-     4. Modificar datos de empleado
-     5. Baja de empleado
-     6. Listar empleados
-     7. Ordenar empleados
-     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
-    10. Salir
-*****************************************************/
-
-
 int main()
 {
     LinkedList* myList;
@@ -39,14 +24,14 @@ int main()
         printf("---------------------------------------------  Bienvenido al sistema de empleados  -------------------------------------------------\n");
         printf("####################################################################################################################################\n");
         printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
-        printf("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n");
+        printf("2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n");
         printf("3. Alta de empleado\n");
         printf("4. Modificar datos de empleado\n");
         printf("5. Baja de empleado\n");
         printf("6. Listar empleados\n");
         printf("7. Ordenar empleados\n");
         printf("8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-        printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
+        printf("9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
         printf("10. Salir\n");
         option = getInt("Ingrese una opcion: ");
         switch (option)
@@ -67,22 +52,25 @@ int main()
 
             break;
             case 5:
-
+            returnValue=controller_removeEmployee(myList);
+            operationConfirmation(returnValue);
             break;
 
             case 6:
-
+            returnValue=controller_ListEmployee(myList);
+            operationConfirmation(returnValue);
             break;
 
             case 7:
 
             break;
             case 8:
-
+            returnValue=controller_saveAsText("data.csv", myList);
+            operationConfirmation(returnValue);
             break;
-
             case 9:
-
+            returnValue=controller_saveAsBinary("data.bin", myList);
+            operationConfirmation(returnValue);
             break;
             case 10:
             printf("Ejecución finalizada. Hasta la próxima!\n");
@@ -93,7 +81,7 @@ int main()
         } // Fin switch
       system("pause");
       system("cls"); // limpiar interfaz
-    } while (option!= 5);  // Fin iteración
+    } while (option!= 10);  // Fin iteración
     return 0;
 }
 
