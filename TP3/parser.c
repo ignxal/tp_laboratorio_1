@@ -10,7 +10,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 	char nombreStr[100];
 	char horasTrabajadasStr[100];
 	char sueldoStr[100];
-    int returnValue = 0;
+    	int returnValue = 0;
 	int howMany;
 
 	if(pFile != NULL && pArrayListEmployee != NULL)
@@ -28,7 +28,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 					returnValue=ll_add(pArrayListEmployee, pEmployee);
 				}
 			}
-        }
+        	}
 	}
 
     return returnValue;
@@ -37,7 +37,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
 	int returnValue=0;
-    int itsOk;
+   	int itsOk;
 	Employee* pEmployee;
 
 	if(pFile != NULL)
