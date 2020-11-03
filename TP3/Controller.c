@@ -4,6 +4,7 @@
 #include "LinkedList.h"
 #include "Employee.h"
 #include "parser.h"
+#include "functions.h"
 
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
@@ -43,8 +44,33 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
+    Employee* pEmployee;
+    char nombre[100];
+    int id;
+    int horasTrabajadas;
+    int sueldo;
+    int returnValue;
 
-    return 1;
+
+    pEmployee=employee_new();
+
+    if ((pEmployee!=NULL) & (pArrayListEmployee !=NULL))
+    {
+        id=employee_nextId(pArrayListEmployee);
+        getString("Ingrese nombre: ", "Error. Ingrese nombre(A-Z): ", nombre);
+        horasTrabajadas= getIntVal("Ingrese horas trabajadas: ", "Error. Ingrese horas trabajadas (0-744): ", 0, 744);
+        sueldo= getIntVal("Ingrese sueldo: ", "Error. Ingrese salario(0-100000): ", 0, 100000);
+
+        if(employee_setId(pEmployee, id)==1 &&
+            employee_setNombre(pEmployee, nombre)==1 &&
+            employee_setHorasTrabajadas(pEmployee, horasTrabajadas)==1 &&
+            employee_setSueldo(pEmployee, sueldo)==1)
+        {
+            returnValue=ll_add(pArrayListEmployee, pEmployee);
+        }
+    }
+
+    return returnValue;
 }
 
 

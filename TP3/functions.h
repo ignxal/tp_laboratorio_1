@@ -14,13 +14,22 @@ float getFloat (char mensaje[]);
 */
 int getInt (char mensaje[]);
 
+/** \brief valida que todo los caracteres sean letras
+ *
+ * \param charArray[] char
+ * \return int return (1) si 0k o 0 si ERROR
+ *
+ */
+int isAlphabetic(char array[]);
+
 /** \brief Permite el ingreso de un dato tipo cadena
 *
 * \param char [] mensaje de ingreso
++ \param char [] mensaje de error
 * \param char [] dato ingresado
 * \return void
 */
-void getString(char mensaje[], char dato[]);
+void getString(char menssage[], char errorMessage[], char array[]);
 
 /** \brief Confirms whether or not if operation was successful
 *

@@ -60,9 +60,28 @@ int main()
             operationConfirmation(returnValue);
             break;
             case 3:
-
+            returnValue=controller_addEmployee(myList);
+            operationConfirmation(returnValue);
             break;
             case 4:
+
+            break;
+            case 5:
+
+            break;
+
+            case 6:
+
+            break;
+
+            case 7:
+
+            break;
+            case 8:
+
+            break;
+
+            case 9:
 
             break;
             case 10:

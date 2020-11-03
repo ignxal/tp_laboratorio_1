@@ -19,12 +19,38 @@ int getInt(char mensaje[])
     return numero;
 }
 
-void getString(char mensaje[], char dato[])
+int isAlphabetic(char array[])
 {
-    printf("%s", mensaje);
-    fflush(stdin);
-    scanf("%[^\n]", dato);
+    int i;
+    int flag=0;
+
+    for(i=0; array[i]!='\0'; i++)
+    {
+        if((array[i]<'a' || array[i]>'z') && (array[i]<'A' || array[i]>'Z'))
+        {
+            flag=1;
+            break;
+        }
+    }
+
+    return flag;
 }
+
+void getString(char message[], char errorMessage[], char array[])
+{
+
+    printf("%s", message);
+    fflush(stdin);
+    scanf("%[^\n]", array);
+
+    while(isAlphabetic(array)==1)
+    {
+        printf("%s", errorMessage);
+        fflush(stdin);
+        scanf("%[^\n]", array);
+    }
+}
+
 
 void operationConfirmation(int index)
 {

@@ -85,6 +85,28 @@ int mostrarEmpleado(Employee* unEmpleado)
     return retorno;
 }
 
+int employee_nextId(LinkedList* pArrayListEmployee)
+{
+	Employee* pEmployee;
+	int aux;
+	int lastId = 0;
+
+	if(pArrayListEmployee != NULL)
+	{
+		for(int i = 0; i < ll_len(pArrayListEmployee); i++)
+		{
+			pEmployee = (Employee*) ll_get(pArrayListEmployee,i);
+			employee_getId(pEmployee, &aux);
+
+			if(aux > lastId || i==0)
+			{
+				lastId = aux;
+			}
+		}
+	}
+	return lastId+1;
+}
+
 int employee_setId(Employee* this,int id)
 {
 	int retorno=0;
