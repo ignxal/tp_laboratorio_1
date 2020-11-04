@@ -59,7 +59,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         id=employee_nextId(pArrayListEmployee);
         getString("Ingrese nombre: ", "Error. Ingrese nombre(A-Z): ", nombre);
         horasTrabajadas= getIntVal("Ingrese horas trabajadas: ", "Error. Ingrese horas trabajadas (0-744): ", 0, 744);
-        sueldo= getIntVal("Ingrese sueldo: ", "Error. Ingrese salario(0-100000): ", 0, 100000);
+        sueldo= getIntVal("Ingrese sueldo: ", "Error. Ingrese salario(0-500000): ", 0, 500000);
 
         if(employee_setId(pEmployee, id)==1 &&
             employee_setNombre(pEmployee, nombre)==1 &&
@@ -71,12 +71,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     }
 
     return returnValue;
-}
-
-
-int controller_editEmployee(LinkedList* pArrayListEmployee)
-{
-    return 1;
 }
 
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
@@ -106,6 +100,28 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     return returnValue;
 }
 
+int controller_editEmployee(LinkedList* pArrayListEmployee)
+{
+    int id;
+    int index;
+    int isEmpty;
+    int returnValue=-1;
+
+    isEmpty=controller_ListEmployee(pArrayListEmployee);
+
+    if (pArrayListEmployee!= NULL && isEmpty==0)
+    {
+        id=getInt("Ingrese ID de empleado: ");
+        index=employee_lookForId(pArrayListEmployee, id);
+        if (index!= -1)
+        {
+            returnValue=employee_edit(pArrayListEmployee, index);
+        }
+    }
+
+    return returnValue;
+}
+
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
     int index;
@@ -114,7 +130,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
     if(pArrayListEmployee != NULL && controller_ListEmployee(pArrayListEmployee)!=-1 )
     {
-        id= getIntVal("Ingrese ID de empleado(0-2500): ", "Error. Ingrese ID de empleado(0-2500): ", 0, 2500);
+        id= getInt("Ingrese ID de empleado: ");
         index= employee_lookForId(pArrayListEmployee, id);
         if(index!=-1)
         {

@@ -65,7 +65,6 @@ int employee_delete(LinkedList* pArrayListEmployee, int index)
     char confirmation;
     int returnValue=-1;
 
-
     if(pArrayListEmployee != NULL)
     {
         confirmation=getChar("Confirma baja de empleado? (s/n): ","Error. Confirma baja de empleado? (s/n): ", 's', 'n');
@@ -243,6 +242,73 @@ int employee_getSueldo(Employee* this,int* sueldo)
 	return retorno;
 }
 
+int employee_edit(LinkedList* pArrayListEmployee, int index)
+{
+    Employee* pEmployee;
+    int option;
+    char name[100];
+    int hoursWorked;
+    int salary;
+    int flag=0;
+    char confirmation;
+    int returnValue=-1;
+
+
+    if(pArrayListEmployee != NULL)
+    {
+        pEmployee=(Employee*)ll_get(pArrayListEmployee, index);
+        if(pEmployee!=NULL)
+        {
+            employee_getHorasTrabajadas(pEmployee, &hoursWorked);
+            employee_getSueldo(pEmployee, &salary);
+            employee_getNombre(pEmployee, name);
+
+            do{
+                system("cls");
+                printf("-------------- Menu de modificaciones --------------\n1. Modificar nombre\n");
+                printf("2. Modificar horas trabajadas\n3. Modificar salario\n4. Salir\n");
+                option=getInt("Ingrese opcion: ");
+
+                switch(option)
+                {
+                    case 1:
+                    getString("Ingrese nuevo nombre: ","Error. Ingrese nuevo nombre: ", name);
+                    flag=1;
+                    break;
+                    case 2:
+                    hoursWorked=getIntVal("Ingrese nuevas horas trabajadas: ","Error. Ingrese nuevas horas trabajadas del empleado: ",0, 744);
+                    flag=1;
+                    break;
+                    case 3:
+                    salary=getIntVal("Ingrese nuevo salario del empleado: ","Error. Ingrese nuevo salario del empleado (0-500000): ",0, 500000);
+                    flag=1;
+                    break;
+                    case 4:
+                    if(flag==1)
+                    {
+                        confirmation=getChar("Desea guardar los cambios? (s/n): ", "Error. Desea guardar los cambios? (s/n):", 's', 'n');
+                        if (confirmation=='s')
+                        {
+                            if (employee_setNombre(pEmployee, name)==1 && employee_setHorasTrabajadas(pEmployee, hoursWorked)==1 && employee_setSueldo(pEmployee, salary)==1)
+                            {
+                                returnValue=0;
+                            }
+                        }
+                    }
+                    printf("\nSaliendo...\n");
+                    break;
+                    default:
+                    printf("Error. Opcion invalida");
+                    break;
+                }
+                system("pause");
+                system("cls");
+            }while(option != 4);
+        }
+    }
+    return returnValue;
+}
+
 int employee_CompareById(void* e1, void* e2)
 {
     Employee* aux1;
@@ -360,4 +426,3 @@ int employee_CompareBySalary(void* e1, void* e2)
 
     return returnValue;
 }
-

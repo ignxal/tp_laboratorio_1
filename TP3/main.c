@@ -10,13 +10,8 @@ int main()
     LinkedList* myList;
     int option;
     int returnValue;
-    //Employee* list;
-    //int len;
-    //int i;
-   //Employee* aux;
 
     myList = ll_newLinkedList();
-
 
    do
     { // menu e ingreso de opcion de usuario
@@ -49,7 +44,8 @@ int main()
             operationConfirmation(returnValue);
             break;
             case 4:
-
+            returnValue=controller_editEmployee(myList);
+            operationConfirmation(returnValue);
             break;
             case 5:
             returnValue=controller_removeEmployee(myList);
@@ -75,7 +71,7 @@ int main()
             printf("Ejecucion finalizada. Hasta la proxima!\n");
             break;
             default:
-            printf("Error. Opcion Inválida.\n");
+            printf("Error. Opcion Invalida.\n");
             break;
         } // Fin switch
       system("pause");
