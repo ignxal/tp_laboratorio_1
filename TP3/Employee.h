@@ -13,9 +13,38 @@ typedef struct
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
 
+
+/** \brief Remueve un empleado del linkedList
+ *
+ * \param pArrayListEmployee LinkedList* Linked list
+ * \param index int posicion de puntero empleado en linkedList
+ *  
+ * \return int Return (-1) si error, (0) si exito.
+ */
 int employee_delete(LinkedList* this, int index);
+
+/** \brief Imprime por pantalla al empleado apuntado por puntero
+ *
+ * \param Employee* anEmployee
+ *  
+ */
 void employee_print(Employee* anEmployee);
+
+/** \brief Busca la id maxima utlizada en linkedlist y le suma 1 
+ *
+ * \param LinkedList* this
+ *  
+ * \return int Return id a ser utilizada
+ */
 int employee_nextId(LinkedList* this);
+
+/** \brief busca en la linkedlist una id que coincida con la ingresada por el usuario
+ *
+ * \param pArrayListEmployee LinkedList*
+ * \param id int
+ *
+ * \return int Return (-1) si error o la id de empleado encontrada
+ */
 int employee_lookForId(LinkedList* pArrayListEmployee, int id);
 
 int employee_setId(Employee* this,int id);
