@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 
-float getFloat(char mensaje[])
+float getFloat(char message[])
 {
-    float numero;
-    printf("%s", mensaje);
-    scanf("%f", &numero);
+    float number;
+    printf("%s", message);
+    scanf("%f", &number);
 
-    return numero;
+    return number;
 }
 
-int getInt(char mensaje[])
+int getInt(char message[])
 {
-    int numero;
-    printf("%s", mensaje);
-    scanf("%d", &numero);
+    int number;
+    printf("%s", message);
+    scanf("%d", &number);
 
-    return numero;
+    return number;
 }
 
 int isAlphabetic(char array[])
@@ -65,7 +65,7 @@ void operationConfirmation(int index)
     }
 }
 
-int getIntVal(char message[], char messageError[], int min, int max)
+int getIntVal(char message[], char errorMessage[], int min, int max)
 {
     int value;
 
@@ -73,7 +73,7 @@ int getIntVal(char message[], char messageError[], int min, int max)
     scanf("%d", &value);
     while (value < min || value > max)
     {
-        printf("%s", messageError);
+        printf("%s", errorMessage);
         scanf("%d", &value);
     }
 
@@ -97,4 +97,3 @@ char getChar(char message[], char errorMessage[], char a, char b)
 
     return character;
 }
-
