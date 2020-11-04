@@ -108,16 +108,13 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-
     int index;
     int id;
     int returnValue=-1;
 
-
-
     if(pArrayListEmployee != NULL && controller_ListEmployee(pArrayListEmployee)!=-1 )
     {
-        id= getIntVal("Ingrese ID a buscar(0-2500): ", "ERROR! Ingrese ID a buscar(0-2500): ", 0, 2500);
+        id= getIntVal("Ingrese ID de empleado(0-2500): ", "Error. Ingrese ID de empleado(0-2500): ", 0, 2500);
         index= employee_lookForId(pArrayListEmployee, id);
         if(index!=-1)
         {
@@ -130,9 +127,60 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
-}
+    int option;
+    int isEmpty;
+    int returnValue=-1;
+    LinkedList* auxList;
 
+    auxList=ll_clone(pArrayListEmployee);
+    isEmpty=ll_isEmpty(auxList);
+
+    if(pArrayListEmployee!= NULL && auxList != NULL && isEmpty==0)
+    {
+        do
+        {
+            system("cls");
+            printf("-------------- Menu de ordenamientos --------------\n1. Ordenar por id\n2. Ordenar por nombre\n");
+            printf("3. Ordenar por horas trabajadas\n4. Ordenar por salario\n5. Salir\n");
+            option=getInt("Ingrese opcion: ");
+
+            switch(option)
+            {
+                case 1:
+                printf("\nOrdenando...\n");
+                ll_sort(auxList, employee_CompareById, 1);
+                break;
+                case 2:
+                printf("\nOrdenando...\n");
+                ll_sort(auxList, employee_CompareByName, 1);
+                break;
+                case 3:
+                printf("\nOrdenando...\n");
+                ll_sort(auxList, employee_CompareByHoursWorked, 1);
+                break;
+                case 4:
+                printf("\nOrdenando...\n");
+                ll_sort(auxList, employee_CompareBySalary, 1);
+                break;
+                case 5:
+                printf("Saliendo del menu de ordenamientos...\n");
+                break;
+                default:
+                printf("Error. Opcion Invalida.\n");
+                break;
+            }
+                if(option>0 && option<5)
+                {
+                    controller_ListEmployee(auxList);
+                }
+                system("pause");
+                system("cls");
+        } while(option!=5);
+        returnValue=ll_deleteLinkedList(auxList);
+    }
+
+    return returnValue;
+}
 
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {

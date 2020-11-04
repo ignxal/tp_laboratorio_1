@@ -209,7 +209,7 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1604441346 source:c:\users\ignac\desktop\tp3\controller.c
+1604447678 source:c:\users\ignac\desktop\tp3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -220,19 +220,19 @@
 
 1604046150 c:\users\ignac\desktop\tp3\linkedlist.h
 
-1604441274 c:\users\ignac\desktop\tp3\employee.h
+1604446389 c:\users\ignac\desktop\tp3\employee.h
 	"Linkedlist.h"
 
 1604437893 c:\users\ignac\desktop\tp3\parser.h
 
-1604441680 source:c:\users\ignac\desktop\tp3\employee.c
+1604447539 source:c:\users\ignac\desktop\tp3\employee.c
 	<stdio.h>
 	<stdlib.h>
 	"Employee.h"
 	"functions.h"
 	<string.h>
 
-1604441396 source:c:\users\ignac\desktop\tp3\main.c
+1604447678 source:c:\users\ignac\desktop\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -250,7 +250,7 @@
 
 1604439910 c:\users\ignac\desktop\tp3\functions.h
 
-1604439836 source:c:\users\ignac\desktop\tp3\functions.c
+1604441916 source:c:\users\ignac\desktop\tp3\functions.c
 	<stdio.h>
 	<string.h>
 

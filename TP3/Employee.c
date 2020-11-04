@@ -243,26 +243,121 @@ int employee_getSueldo(Employee* this,int* sueldo)
 	return retorno;
 }
 
-int employee_CompareByName(Employee* e1, Employee* e2)
+int employee_CompareById(void* e1, void* e2)
 {
-    return strcmp(e1->nombre,e2->nombre);
-}
+    Employee* aux1;
+    Employee* aux2;
+    int id1;
+    int id2;
+    int returnValue=0;
 
-int employee_CompareById(Employee* e1, Employee* e2)
-{
-    int comp=0;
+    if(e1!=NULL && e2 != NULL)
+    {
+        aux1=(Employee*)e1;
+        aux2=(Employee*)e2;
 
-    if(e1->id > e2->id)
-    {
-        comp=1;
-    }
-    else
-    {
-        if (e1->id < e2-> id)
+        employee_getId(aux1, &id1);
+        employee_getId(aux2, &id2);
+
+       if(id1 > id2)
         {
-            comp=-1;
+            returnValue=1;
+        }
+        else
+        {
+            if (id1 < id2)
+            {
+                returnValue=-1;
+            }
         }
     }
 
-    return comp;
+    return returnValue;
 }
+
+int employee_CompareByName(void* e1, void* e2)
+{
+    Employee* aux1;
+    Employee* aux2;
+    char name1[100];
+    char name2[100];
+    int returnValue=0;
+
+    if(e1 !=NULL && e2 != NULL)
+    {
+        aux1=(Employee*)e1;
+        aux2=(Employee*)e2;
+
+        employee_getNombre(aux1, name1);
+        employee_getNombre(aux2, name2);
+
+        returnValue= strcmp(name1, name2);
+    }
+
+    return returnValue;
+}
+
+int employee_CompareByHoursWorked(void* e1, void* e2)
+{
+    Employee* aux1;
+    Employee* aux2;
+    int hours1;
+    int hours2;
+    int returnValue=0;
+
+    if(e1!=NULL && e2 != NULL)
+    {
+        aux1=(Employee*)e1;
+        aux2=(Employee*)e2;
+
+        employee_getHorasTrabajadas(aux1, &hours1);
+        employee_getHorasTrabajadas(aux2, &hours2);
+
+       if(hours1 > hours2)
+        {
+            returnValue=1;
+        }
+        else
+        {
+            if (hours1 < hours2)
+            {
+                returnValue=-1;
+            }
+        }
+    }
+
+    return returnValue;
+}
+
+int employee_CompareBySalary(void* e1, void* e2)
+{
+    Employee* aux1;
+    Employee* aux2;
+    int salary1;
+    int salary2;
+    int returnValue=0;
+
+    if(e1!=NULL && e2 != NULL)
+    {
+        aux1=(Employee*)e1;
+        aux2=(Employee*)e2;
+
+        employee_getSueldo(aux1, &salary1);
+        employee_getSueldo(aux2, &salary2);
+
+       if(salary1 > salary2)
+        {
+            returnValue=1;
+        }
+        else
+        {
+            if (salary1 < salary2)
+            {
+                returnValue=-1;
+            }
+        }
+    }
+
+    return returnValue;
+}
+
