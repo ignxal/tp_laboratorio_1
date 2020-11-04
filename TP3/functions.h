@@ -4,7 +4,7 @@
 *
 * \return float el dato ingresado
 */
-float getFloat (char mensaje[]);
+float getFloat (char message[]);
 
 /** \brief Permite el ingreso de un dato tipo entero
 *
@@ -12,7 +12,7 @@ float getFloat (char mensaje[]);
 *
 * \return int el dato ingresado
 */
-int getInt (char mensaje[]);
+int getInt (char message[]);
 
 /** \brief valida que todo los caracteres sean letras
  *
@@ -29,7 +29,7 @@ int isAlphabetic(char array[]);
 * \param char [] dato ingresado
 * \return void
 */
-void getString(char menssage[], char errorMessage[], char array[]);
+void getString(char message[], char errorMessage[], char array[]);
 
 /** \brief Confirms whether or not if operation was successful
 *
@@ -47,7 +47,15 @@ void operationConfirmation(int index);
 *
 * \return int el dato ingresado
 */
-int getIntVal(char message[], char messageError[], int min, int max);
+int getIntVal(char message[], char errorMessage[], int min, int max);
 
-
-char getChar(char mensaje[], char errorMessage[], char a, char b);
+/** \brief Permite el ingreso de un caracter
+*
+* \param char [] message
+* \param char [] messageError
+* \param int a (validacion)
+* \param int b (validacion)
+*
+* \return int el dato ingresado
+*/
+char getChar(char message[], char errorMessage[], char a, char b);
