@@ -102,7 +102,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     int len;
     int i=0;
 
-    // Busco tamaño lista
+    // Busco tamaÃ±o lista
     len=ll_len(this);
     // Si es nulo, sumo 1 espacio
     if(len==NULL)
@@ -179,7 +179,7 @@ int ll_add(LinkedList* this, void* pElement)
 
     if (this!=NULL)
     {
-        // saco indice con el tamaño del ll
+        // saco indice con el tamaÃ±o del ll
         indice=this->size;
         // si se hizo bien, devuelve el 0 para el retorno
         returnAux=addNode(this,indice,pElement);
@@ -278,7 +278,7 @@ int ll_remove(LinkedList* this,int index)
             // paso el proximo nodo del actual al previo para no romper cadena
             prev->pNextNode=actual->pNextNode;
         }
-        // libero y disminuyo tamaño
+        // libero y disminuyo tamaÃ±o
         free(actual);
         this->size--;
         returnAux=0;
@@ -307,7 +307,7 @@ int ll_clear(LinkedList* this)
         len=ll_len(this);
         for(i=0;i<len;i++)
         {
-            ll_remove(this,i);
+            ll_remove(this,0);
         }
         returnAux=0;
     }
