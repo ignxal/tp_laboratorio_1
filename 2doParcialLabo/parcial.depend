@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1606916342 source:c:\users\ignac\onedrive\escritorio\2doparciallabo\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Competitor.h"
+	"parser.h"
+	"funciones.h"
+
+1606915107 c:\users\ignac\onedrive\escritorio\2doparciallabo\linkedlist.h
+
+1607006335 c:\users\ignac\onedrive\escritorio\2doparciallabo\competitor.h
+	"Linkedlist.h"
+
+1606879441 c:\users\ignac\onedrive\escritorio\2doparciallabo\parser.h
+
+1606921892 c:\users\ignac\onedrive\escritorio\2doparciallabo\funciones.h
+
+1606921892 source:c:\users\ignac\onedrive\escritorio\2doparciallabo\funciones.c
+	<stdio.h>
+	<string.h>
+
+1606922908 source:c:\users\ignac\onedrive\escritorio\2doparciallabo\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Competitor.h"
+
+1607005988 source:c:\users\ignac\onedrive\escritorio\2doparciallabo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Competitor.h"
+	"funciones.h"
+
+1606916342 c:\users\ignac\onedrive\escritorio\2doparciallabo\controller.h
+	"Linkedlist.h"
+	"Competitor.h"
+
+1607006334 source:c:\users\ignac\onedrive\escritorio\2doparciallabo\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Competitor.h"
+
+1607006376 source:c:\users\ignac\onedrive\escritorio\2doparciallabo\competitor.c
+	<stdio.h>
+	<stdlib.h>
+	"Competitor.h"
+	"parser.h"
+	"funciones.h"
+	<string.h>
+
