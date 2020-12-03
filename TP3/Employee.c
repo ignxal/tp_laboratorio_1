@@ -28,33 +28,41 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     char nombre[50];
     int horasTrabajadas;
     int sueldo;
+    int idFlag;
+    int nombreFlag;
+    int horasFlag;
+    int sueldoFlag;
 
     puntero = employee_new();
 
     if(puntero!=NULL && idStr!=NULL && nombreStr!=NULL && horasTrabajadasStr!=NULL && sueldoStr!=NULL)
     {
         id = atoi(idStr);
-        employee_setId(puntero, id);
+        idFlag= employee_setId(puntero, id);
 
-        strcpy(nombre, nombreStr);
-        employee_setNombre(puntero, nombre);
-
-        horasTrabajadas=atoi(horasTrabajadasStr);
-        employee_setHorasTrabajadas(puntero, horasTrabajadas);
-
-        sueldo=atoi(sueldoStr);
-        employee_setSueldo(puntero, sueldo);
+        if (idFlag==1)
+        {
+            strcpy(nombre, nombreStr);
+            nombreFlag=employee_setNombre(puntero, nombre);
+            if (nombreFlag==1)
+            {
+                horasTrabajadas=atoi(horasTrabajadasStr);
+                horasFlag=employee_setHorasTrabajadas(puntero, horasTrabajadas);
+                if (horasFlag==1)
+                {
+                    sueldo=atoi(sueldoStr);
+                    sueldoFlag=employee_setSueldo(puntero, sueldo);
+                }
+            }
+        }
     }
 
-    /*if (employee_setId(puntero, id) == 0 || employee_setNombre(puntero, nombre) == 0 || employee_setHorasTrabajadas(puntero, horasTrabajadas) == 0 || employee_setSueldo(puntero, sueldo) == 0)
+    if(sueldoFlag!=1)
     {
         free(puntero);
         puntero=NULL;
+        printf("Error en setters\n");
     }
-    else
-    {
-       printf("Error en parte de set");
-    }*/
 
     return puntero;
 }
