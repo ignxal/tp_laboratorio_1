@@ -58,6 +58,7 @@ int main()
             break;
             case 5:
                 returnValue=controller_guardarDato(myList,competitor_buscarPuntajeMenorADiez);
+                operationConfirmation(returnValue);
             break;
             case 6:
                 if(flag==1)
@@ -75,7 +76,8 @@ int main()
                 controller_ListCompetitor(nuevaLLdos, flag);
                 break;
             case 8:
-                controller_guardarMejoresPuntajesRondaUno(nuevaLLdos);
+                returnValue=controller_guardarMejoresPuntajesRondaUno(nuevaLLdos);
+                operationConfirmation(returnValue);
                 break;
             case 10:
             printf("Ejecucion finalizada. Hasta la proxima!\n");
